@@ -33,7 +33,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     '8000-milosson-travelblog-5vyjtvxthhd.ws-eu115.gitpod.io',
-    '*.codeinstitute-ide.net'
+    '*.codeinstitute-ide.net',
+    '*.herokuapp.com'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
