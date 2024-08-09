@@ -17,6 +17,12 @@ class Post(models.Model):
         status (int): The publication status of the post (0 for Draft, 1 for Published).
         excerpt (str): An optional short excerpt from the post.
     """
+    def __str__(self):
+        status_label = "Draft" if self.status == 0 else "Published"
+        created_on_formatted = self.created_on.strftime('%Y-%m-%d %H:%M:%S')
+        return f"The title of this post is: {self.title} > By Author : {self.author} > {status_label} > Created on: {created_on_formatted}"
+    class Meta:
+        ordering = ["-created_on"]
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
