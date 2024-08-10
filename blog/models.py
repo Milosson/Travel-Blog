@@ -36,6 +36,14 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    
+    def __str__(self):
+        created_on_formatted = self.created_on.strftime('%Y-%m-%d %H:%M:%S')
+        return f"Comment {self.body} > By Author : {self.author} > Created on: {created_on_formatted}"
+    
+    class Meta:
+        ordering = ["-created_on"]
+        
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(
