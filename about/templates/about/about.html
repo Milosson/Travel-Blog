@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+
+
 <div class="container mt-5">
   <div class="row">
     <div class="col-4 text-center">
-      <img src="{% static 'images/nobody.jpg' %}" width="75%" />
+      <img src="{% static 'images/profile.jpg' %}" width="75%" />
     </div>
     <div class="col-8">
       <!-- Title goes between these h2 tags -->
       <h2>{{ about.title }}
-        Milo Razzaz
+        Hassan Abi
       </h2>
       <!-- Content goes directly underneath this -->
-       asdasdf
+       Förorts-Entreprenör och mångsysslare sedan ducky fejden (c) 1999.
       {{ about.content | safe }}
     </div>
   </div>
