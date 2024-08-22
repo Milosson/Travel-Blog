@@ -159,3 +159,9 @@ body {
 .approval {
     color: rgb(222, 146, 168);
 }
+
+/* Add this to your CSS file */
+.form-control {
+    max-width: 400px; /* or any width you prefer */
+    margin: 0 auto; /* Centers the input */
+}
