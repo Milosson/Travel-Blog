@@ -1,67 +1,38 @@
 {% extends "base.html" %}
 
 {% load i18n %}
-{% load account socialaccount %}
 
-{% block head_title %}{% trans "Sign Up" %}{% endblock %}
+{% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6 mt-5 offset-md-3">
-            <h3 class="text-center">{% trans "Create an Account" %}</h3>
-            <p class="text-center mb-4">
-                {% blocktrans %}Join us today and start sharing your adventures! If you already have an account, <a class="link" href="{{ login_url }}">log in</a> here.{% endblocktrans %}
-            </p>
-        </div>
+  <div class="row">
+    <div class="col-md-8 mt-3 offset-md-2">
+      <h3>{% trans "Sign Up" %}</h3>
+
+      <p>{% blocktrans %}
+        Welcome back to the B<span class="red-o">l</span>og|star blog.
+        Do you already have an account? Then please
+        <a class="link" href="{{ login_url }}">sign in</a>
+        instead.
+      {% endblocktrans %}</p>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-md-3 mt-3 offset-md-3">
-            <form method="POST" action="{% url 'account_signup' %}">
-                {% csrf_token %}
-                {% if form.non_field_errors %}
-                    <div class="alert alert-danger" role="alert">
-                        {{ form.non_field_errors }}
-                    </div>
-                {% endif %}
-
-                <div class="mb-3">
-                    <label for="id_username" class="form-label">{% trans "Username" %}</label>
-                    <input type="text" name="username" id="id_username" class="form-control" required>
-                    {% for error in form.username.errors %}
-                        <div class="text-danger">{{ error }}</div>
-                    {% endfor %}
-                </div>
-
-                <div class="mb-3">
-                    <label for="id_email" class="form-label">{% trans "Email Address" %}</label>
-                    <input type="email" name="email" id="id_email" class="form-control" required>
-                    {% for error in form.email.errors %}
-                        <div class="text-danger">{{ error }}</div>
-                    {% endfor %}
-                </div>
-
-                <div class="mb-3">
-                    <label for="id_password1" class="form-label">{% trans "Password" %}</label>
-                    <input type="password" name="password1" id="id_password1" class="form-control" required>
-                    {% for error in form.password1.errors %}
-                        <div class="text-danger">{{ error }}</div>
-                    {% endfor %}
-                </div>
-
-                <div class="mb-3">
-                    <label for="id_password2" class="form-label">{% trans "Confirm Password" %}</label>
-                    <input type="password" name="password2" id="id_password2" class="form-control" required>
-                    {% for error in form.password2.errors %}
-                        <div class="text-danger">{{ error }}</div>
-                    {% endfor %}
-                </div>
-
-                <div class="d-grid">
-                    <button class="btn btn-signup" type="submit">{% trans "Sign Up" %}</button>
-                </div>
-            </form>
-        </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 mt-3 offset-md-2">
+      <form class="signup" id="signup_form" method="post"
+        action="{% url 'account_signup' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}"
+          value="{{ redirect_field_value }}" />
+        {% endif %}
+        <button class="btn btn-signup right" type="submit">
+          {% trans "Sign Up" %} &raquo;</button>
+      </form>
     </div>
+  </div>
 </div>
+
 {% endblock %}
