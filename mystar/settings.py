@@ -50,10 +50,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'django_summernote',
+    'blog',
     'about',
 ]
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -64,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'mystar.urls'
@@ -107,6 +116,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# EMAIL VERIFICATION FOR CREATING ACCOUNT SET TO NONE IF NOT USED OR 
+# Internal Server errors (code 500) during login and registration.
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
@@ -114,9 +128,9 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'  # Note the leading slash for URL
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]  # Adjusted to match your folder name
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_root')  # You can change this to another name if needed
+STATIC_URL = '/static/'  
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')] 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_root') 
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
