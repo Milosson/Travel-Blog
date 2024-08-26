@@ -32,12 +32,12 @@ SECRET_KEY = 'django-insecure-8bh8)3pu@2f_v3n=+3a6n(h0w1xn5*$r^b@7esf)kc%o7z)v%h
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-milosson-travelblog-5vyjtvxthhd.ws-eu115.gitpod.io',
+    '8000-milosson-travelblog-mxfczvh5hxq.ws-eu115.gitpod.io',
     '.herokuapp.com'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-milosson-travelblog-5vyjtvxthhd.ws-eu115.gitpod.io',
+    'https://8000-milosson-travelblog-mxfczvh5hxq.ws-eu115.gitpod.io',
     'https://*.codeinstitute-ide.net',
     'https://*.herokuapp.com'
 ]
