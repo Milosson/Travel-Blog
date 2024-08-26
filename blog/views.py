@@ -4,6 +4,7 @@ from django.contrib import messages
 from .models import Post
 from .forms import CommentForm
 
+
 # Create your views here.
 
 class PostList(generic.ListView):
